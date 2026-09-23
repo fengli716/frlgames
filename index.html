@@ -17,7 +17,7 @@
             background-color: #0d0d0d;
             /* 赛车格子旗暗纹背景与热烈红光渐变 */
             background-image: 
-                radial-gradient(circle at center, rgba(234, 32, 39, 0.2) 0%, transparent 70%),
+                radial-gradient(circle at center, rgba(234, 32, 39, 0.15) 0%, transparent 70%),
                 linear-gradient(45deg, #111 25%, transparent 25%), 
                 linear-gradient(-45deg, #111 25%, transparent 25%), 
                 linear-gradient(45deg, transparent 75%, #111 75%), 
@@ -25,20 +25,25 @@
             background-size: 100% 100%, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between; /* 确保中间内容居中，页脚在最下方 */
             align-items: center;
             overflow: hidden;
             color: #fff;
         }
 
         /* 主视觉容器 */
-        .container {
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             position: relative;
             z-index: 10;
             padding: 20px;
-            /* 赛车倾斜速度感 */
-            transform: skewX(-4deg); 
+            transform: skewX(-4deg); /* 赛车倾斜速度感 */
         }
 
         /* 顶部装饰线：赛车跑道拉花 */
@@ -81,7 +86,84 @@
             padding-bottom: 10px;
         }
 
-        /* 底部氮气尾气/烟雾粒子装饰特效 */
+        /* 新增：赛车风格页脚公司信息 */
+        .company-footer {
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.7) 100%);
+            border-top: 2px solid rgba(234, 32, 39, 0.3); /* 暗红赛道分隔线 */
+            padding: 30px 20px;
+            z-index: 10;
+            font-family: 'Arial', sans-serif; /* 公司文本使用易读字体 */
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* 页脚左侧：版权与公司全称 */
+        .footer-left .company-name {
+            font-family: 'Impact', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        /* 页脚中间：联系方式与商务条款 */
+        .footer-center {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-center a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-center a:hover {
+            color: #FFC312; /* 悬浮变成闪电黄 */
+        }
+
+        /* 页脚右侧：社交媒体/社区链接占位 */
+        .footer-right .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-right .social-icon {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Impact', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .footer-right .social-icon:hover {
+            background: #EA2027; /* 悬浮变成赛道红 */
+            border-color: #EA2027;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(234, 32, 39, 0.4);
+        }
+
+        /* 底部背景烟雾 */
         .smoke-overlay {
             position: absolute;
             bottom: 0;
@@ -112,8 +194,15 @@
             }
         }
 
-        /* 移动端适配 */
+        /* 移动端响应式适配 */
         @media (max-width: 768px) {
+            body {
+                overflow-y: auto; /* 允许手机端上下滚动查看公司信息 */
+            }
+            .main-content {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
             .title {
                 font-size: 3.5rem;
                 text-shadow: 
@@ -125,6 +214,15 @@
                 letter-spacing: 3px;
                 margin-top: 25px;
             }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .footer-center {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -132,16 +230,39 @@
 
     <div class="smoke-overlay"></div>
 
-    <div class="container">
-        <!-- 赛车饰条 -->
+    <!-- 主视觉区 -->
+    <div class="main-content">
         <div class="racing-line"></div>
-        
-        <!-- 主标题 -->
         <h1 class="title">FRL GAMES</h1>
-        
-        <!-- 副标题 -->
         <h2 class="subtitle">FR LEGENDS 2 COMING SOON</h2>
     </div>
+
+    <!-- 新增：公司信息页脚 -->
+    <footer class="company-footer">
+        <div class="footer-container">
+            <!-- 左侧：公司名称与版权 -->
+            <div class="footer-left">
+                <div class="company-name">FRL GAMES LLC</div>
+                <p>&copy; 2026 FRL GAMES LLC. All Rights Reserved.</p>
+            </div>
+            
+            <!-- 中间：商务与联系链接 -->
+            <div class="footer-center">
+                <a href="mailto:support@frlgames.com">Contact: support@frlgames.com</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
+            
+            <!-- 右侧：玩家社区/社交媒体入口 (如 X/Discord/YouTube) -->
+            <div class="footer-right">
+                <div class="social-links">
+                    <a href="#discord" class="social-icon" title="Discord">DC</a>
+                    <a href="#twitter" class="social-icon" title="Twitter/X">X</a>
+                    <a href="#youtube" class="social-icon" title="YouTube">YT</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
