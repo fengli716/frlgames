@@ -3,64 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRL Games</title>
+    <title>FRL GAMES | FR LEGENDS 2 COMING SOON</title>
     <style>
+        /* 全局样式：赛车硬核黑灰底色 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Impact', 'Arial Black', sans-serif;
         }
 
         body {
+            background-color: #0d0d0d;
+            /* 赛车格子旗暗纹背景与热烈红光渐变 */
+            background-image: 
+                radial-gradient(circle at center, rgba(234, 32, 39, 0.2) 0%, transparent 70%),
+                linear-gradient(45deg, #111 25%, transparent 25%), 
+                linear-gradient(-45deg, #111 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #111 75%), 
+                linear-gradient(-45deg, transparent 75%, #111 75%);
+            background-size: 100% 100%, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #0f172a;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
+            color: #fff;
         }
 
+        /* 主视觉容器 */
         .container {
             text-align: center;
-            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            /* 赛车倾斜速度感 */
+            transform: skewX(-4deg); 
         }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
+        /* 顶部装饰线：赛车跑道拉花 */
+        .racing-line {
+            width: 120px;
+            height: 8px;
+            background: linear-gradient(90deg, #FFC312, #EE5A24, #EA2027);
+            margin: 0 auto 30px auto;
+            border-radius: 4px;
+            box-shadow: 0 0 15px #EA2027;
+        }
+
+        /* 主标题：FRL GAMES */
+        .title {
+            font-size: 7rem;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            color: #fff;
+            /* 激情火焰红与闪电黄的街头涂鸦描边质感 */
+            text-shadow: 
+                0 0 10px rgba(234, 32, 39, 0.8),
+                0 0 20px rgba(234, 32, 39, 0.5),
+                -4px 4px 0px #EA2027,
+                -8px 8px 0px #EE5A24,
+                -12px 12px 0px #FFC312;
+            animation: drift-glow 2s infinite alternate;
         }
 
-        p {
-            font-size: 1.25rem;
-            letter-spacing: 0.3em;
+        /* 副标题：FR LEGENDS 2 COMING SOON */
+        .subtitle {
+            font-size: 2.2rem;
             text-transform: uppercase;
-            color: #94a3b8;
-            font-weight: 300;
+            margin-top: 40px;
+            letter-spacing: 6px;
+            color: #FFC312; /* 氮气加速闪电黄 */
+            text-shadow: 0 0 10px rgba(255, 195, 18, 0.6);
+            font-style: italic; /* 斜体强调速度感 */
+            display: inline-block;
+            border-bottom: 3px dashed #EA2027;
+            padding-bottom: 10px;
         }
 
-        /* 移动端自适应 */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.5rem;
+        /* 底部氮气尾气/烟雾粒子装饰特效 */
+        .smoke-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom, rgba(238, 90, 36, 0.05), transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 呼吸与漂移火花动效 */
+        @keyframes drift-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(234, 32, 39, 0.8),
+                    -4px 4px 0px #EA2027,
+                    -8px 8px 0px #EE5A24,
+                    -12px 12px 0px #FFC312;
             }
-            p {
-                font-size: 1rem;
+            100% {
+                text-shadow: 
+                    0 0 25px rgba(238, 90, 36, 1),
+                    -4px 4px 0px #EA2027,
+                    -8px 8px 0px #EE5A24,
+                    -12px 12px 0px #FFC312;
+                transform: scale(1.02);
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3.5rem;
+                text-shadow: 
+                    -3px 3px 0px #EA2027,
+                    -6px 6px 0px #EE5A24;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 3px;
+                margin-top: 25px;
             }
         }
     </style>
 </head>
 <body>
+
+    <div class="smoke-overlay"></div>
+
     <div class="container">
-        <h1>FRL GAMES</h1>
-        <p>Coming Soon</p>
+        <!-- 赛车饰条 -->
+        <div class="racing-line"></div>
+        
+        <!-- 主标题 -->
+        <h1 class="title">FRL GAMES</h1>
+        
+        <!-- 副标题 -->
+        <h2 class="subtitle">FR LEGENDS 2 COMING SOON</h2>
     </div>
+
 </body>
 </html>
