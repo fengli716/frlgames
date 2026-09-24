@@ -23,13 +23,121 @@
                 linear-gradient(45deg, transparent 75%, #111 75%), 
                 linear-gradient(-45deg, transparent 75%, #111 75%);
             background-size: 100% 100%, 40px 40px, 40px 40px, 40px 40px, 40px 40px;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between; /* 确保中间内容居中，页脚在最下方 */
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             color: #fff;
+            padding-top: 70px; /* 为固定导航栏预留空间 */
+        }
+
+        /* 顶部固定导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #000000;
+            border-bottom: 2px solid rgba(234, 32, 39, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 导航栏 Logo (最左侧) */
+        .navbar-logo {
+            font-size: 1.8rem;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: -2px 2px 0px #EA2027;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-logo:hover {
+            color: #FFC312;
+        }
+
+        /* 导航栏菜单 (最右侧) */
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #FFC312;
+            text-shadow: 0 0 8px rgba(255, 195, 18, 0.6);
+        }
+
+        /* 下拉菜单样式 */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #111111;
+            border: 1px solid #333;
+            border-top: 3px solid #EA2027;
+            min-width: 180px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* 悬浮打开下拉菜单 */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #222;
+            white-space: nowrap;
+        }
+
+        .dropdown-item:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-item a:hover {
+            background-color: #EA2027;
+            color: #fff;
+            padding-left: 25px; /* 悬浮右移小效果 */
         }
 
         /* 主视觉容器 */
@@ -86,7 +194,7 @@
             padding-bottom: 10px;
         }
 
-        /* 新增：赛车风格页脚公司信息 */
+        /* 公司信息页脚 */
         .company-footer {
             width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.7) 100%);
@@ -199,8 +307,11 @@
             body {
                 overflow-y: auto; /* 允许手机端上下滚动查看公司信息 */
             }
+            .navbar {
+                padding: 0 20px;
+            }
             .main-content {
-                padding-top: 80px;
+                padding-top: 40px;
                 padding-bottom: 40px;
             }
             .title {
@@ -228,6 +339,23 @@
 </head>
 <body>
 
+    <!-- 顶部固定导航栏 -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">frl games</a>
+        <ul class="navbar-menu">
+            <li class="nav-item">
+                <a href="#about" class="nav-link">about</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#game" class="nav-link">game ▾</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="#fr-legends">fr legends</a></li>
+                    <li class="dropdown-item"><a href="#fr-legends-2">fr legends 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
     <div class="smoke-overlay"></div>
 
     <!-- 主视觉区 -->
@@ -237,7 +365,7 @@
         <h2 class="subtitle">FR LEGENDS 2 COMING SOON</h2>
     </div>
 
-    <!-- 新增：公司信息页脚 -->
+    <!-- 公司信息页脚 -->
     <footer class="company-footer">
         <div class="footer-container">
             <!-- 左侧：公司名称与版权 -->
