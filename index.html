@@ -50,14 +50,22 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* 导航栏 Logo (最左侧) */
+        /* 导航栏 Logo (移植了主标题的炫酷特效) */
         .navbar-logo {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: -2px 2px 0px #EA2027;
+            font-style: italic; /* 斜体倾斜感 */
+            display: inline-block;
+            /* 激情火焰红与闪电黄的描边阴影质感 */
+            text-shadow: 
+                0 0 8px rgba(234, 32, 39, 0.8),
+                -2px 2px 0px #EA2027,
+                -4px 4px 0px #EE5A24,
+                -6px 6px 0px #FFC312;
+            animation: drift-glow 2s infinite alternate;
             transition: color 0.3s ease;
         }
 
@@ -137,7 +145,7 @@
         .dropdown-item a:hover {
             background-color: #EA2027;
             color: #fff;
-            padding-left: 25px; /* 悬浮右移小效果 */
+            padding-left: 25px; /* 悬浮右移效果 */
         }
 
         /* 主视觉容器 */
@@ -154,7 +162,7 @@
             transform: skewX(-4deg); /* 赛车倾斜速度感 */
         }
 
-        /* 顶部装饰线：赛车跑道拉花 */
+        /* 装饰线：赛车跑道拉花 */
         .racing-line {
             width: 120px;
             height: 8px;
@@ -164,44 +172,27 @@
             box-shadow: 0 0 15px #EA2027;
         }
 
-        /* 主标题：FRL GAMES */
-        .title {
-            font-size: 7rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #fff;
-            /* 激情火焰红与闪电黄的街头涂鸦描边质感 */
-            text-shadow: 
-                0 0 10px rgba(234, 32, 39, 0.8),
-                0 0 20px rgba(234, 32, 39, 0.5),
-                -4px 4px 0px #EA2027,
-                -8px 8px 0px #EE5A24,
-                -12px 12px 0px #FFC312;
-            animation: drift-glow 2s infinite alternate;
-        }
-
         /* 副标题：FR LEGENDS 2 COMING SOON */
         .subtitle {
-            font-size: 2.2rem;
+            font-size: 3rem;
             text-transform: uppercase;
-            margin-top: 40px;
             letter-spacing: 6px;
             color: #FFC312; /* 氮气加速闪电黄 */
-            text-shadow: 0 0 10px rgba(255, 195, 18, 0.6);
+            text-shadow: 0 0 15px rgba(255, 195, 18, 0.6);
             font-style: italic; /* 斜体强调速度感 */
             display: inline-block;
-            border-bottom: 3px dashed #EA2027;
-            padding-bottom: 10px;
+            border-bottom: 4px dashed #EA2027;
+            padding-bottom: 12px;
         }
 
         /* 公司信息页脚 */
         .company-footer {
             width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.7) 100%);
-            border-top: 2px solid rgba(234, 32, 39, 0.3); /* 暗红赛道分隔线 */
+            border-top: 2px solid rgba(234, 32, 39, 0.3);
             padding: 30px 20px;
             z-index: 10;
-            font-family: 'Arial', sans-serif; /* 公司文本使用易读字体 */
+            font-family: 'Arial', sans-serif;
             font-size: 0.9rem;
             color: #aaa;
         }
@@ -239,10 +230,10 @@
         }
 
         .footer-center a:hover {
-            color: #FFC312; /* 悬浮变成闪电黄 */
+            color: #FFC312;
         }
 
-        /* 页脚右侧：社交媒体/社区链接占位 */
+        /* 页脚右侧：社交媒体链接 */
         .footer-right .social-links {
             display: flex;
             gap: 15px;
@@ -265,7 +256,7 @@
         }
 
         .footer-right .social-icon:hover {
-            background: #EA2027; /* 悬浮变成赛道红 */
+            background: #EA2027;
             border-color: #EA2027;
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(234, 32, 39, 0.4);
@@ -283,47 +274,43 @@
             z-index: 1;
         }
 
-        /* 呼吸与漂移火花动效 */
+        /* 呼吸与漂移火花动效（应用于顶部 FRL GAMES Logo） */
         @keyframes drift-glow {
             0% {
                 text-shadow: 
-                    0 0 10px rgba(234, 32, 39, 0.8),
-                    -4px 4px 0px #EA2027,
-                    -8px 8px 0px #EE5A24,
-                    -12px 12px 0px #FFC312;
+                    0 0 8px rgba(234, 32, 39, 0.8),
+                    -2px 2px 0px #EA2027,
+                    -4px 4px 0px #EE5A24,
+                    -6px 6px 0px #FFC312;
             }
             100% {
                 text-shadow: 
-                    0 0 25px rgba(238, 90, 36, 1),
-                    -4px 4px 0px #EA2027,
-                    -8px 8px 0px #EE5A24,
-                    -12px 12px 0px #FFC312;
-                transform: scale(1.02);
+                    0 0 18px rgba(238, 90, 36, 1),
+                    -2px 2px 0px #EA2027,
+                    -4px 4px 0px #EE5A24,
+                    -6px 6px 0px #FFC312;
+                transform: scale(1.03);
             }
         }
 
         /* 移动端响应式适配 */
         @media (max-width: 768px) {
             body {
-                overflow-y: auto; /* 允许手机端上下滚动查看公司信息 */
+                overflow-y: auto;
             }
             .navbar {
-                padding: 0 20px;
+                padding: 0 15px;
+            }
+            .navbar-logo {
+                font-size: 1.5rem;
             }
             .main-content {
                 padding-top: 40px;
                 padding-bottom: 40px;
             }
-            .title {
-                font-size: 3.5rem;
-                text-shadow: 
-                    -3px 3px 0px #EA2027,
-                    -6px 6px 0px #EE5A24;
-            }
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 letter-spacing: 3px;
-                margin-top: 25px;
             }
             .footer-container {
                 flex-direction: column;
@@ -361,7 +348,6 @@
     <!-- 主视觉区 -->
     <div class="main-content">
         <div class="racing-line"></div>
-        <h1 class="title">FRL GAMES</h1>
         <h2 class="subtitle">FR LEGENDS 2 COMING SOON</h2>
     </div>
 
@@ -381,7 +367,7 @@
                 <a href="terms.html">Terms of Service</a>
             </div>
             
-            <!-- 右侧：玩家社区/社交媒体入口 (如 X/Discord/YouTube) -->
+            <!-- 右侧：玩家社区/社交媒体入口 -->
             <div class="footer-right">
                 <div class="social-links">
                     <a href="#discord" class="social-icon" title="Discord">DC</a>
