@@ -19,7 +19,6 @@
 
         body {
             background-color: #0d0d0d;
-            /* 赛车格子旗暗纹背景与热烈红光渐变 */
             background-image: 
                 radial-gradient(circle at center, rgba(234, 32, 39, 0.15) 0%, transparent 70%),
                 linear-gradient(45deg, #111 25%, transparent 25%), 
@@ -33,7 +32,7 @@
             align-items: center;
             overflow-x: hidden;
             color: #fff;
-            padding-top: 90px; /* 为固定导航栏预留留白 */
+            padding-top: 90px;
         }
 
         /* 顶部固定导航栏 */
@@ -60,9 +59,9 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-style: italic; /* 斜体倾斜感 */
+            font-style: italic;
             display: inline-block;
-            white-space: nowrap; /* 防止 Logo 在手机上被挤换行 */
+            white-space: nowrap;
             text-shadow: 
                 0 0 8px rgba(234, 32, 39, 0.8),
                 -2px 2px 0px #EA2027,
@@ -98,6 +97,7 @@
             display: block;
             white-space: nowrap;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -118,23 +118,18 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
             border-radius: 0 0 4px 4px;
+            pointer-events: none; /* 默认不可点击 */
         }
 
-        /* 悬停且未被强制隐藏时显示下拉框 */
-        .dropdown:hover:not(.is-hidden) .dropdown-menu {
+        /* JS控制的展开样式 */
+        .dropdown.is-open .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-        }
-
-        /* 强制隐藏时的辅助类 */
-        .dropdown.is-hidden .dropdown-menu {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
+            pointer-events: auto; /* 展开后允许点击 */
         }
 
         .dropdown-item a {
@@ -205,7 +200,7 @@
             margin-top: 10px;
         }
 
-        /* 联系方式信息列表样式 */
+        /* 联系方式列表样式 */
         .contact-list {
             list-style: none;
             font-family: 'Arial', sans-serif;
@@ -249,11 +244,11 @@
             margin-bottom: 25px;
         }
 
-        /* 响应式 YouTube 视频播放器容器 (16:9) */
+        /* 响应式 YouTube 视频播放器容器 */
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             margin: 25px 0;
             border-radius: 8px;
@@ -279,12 +274,11 @@
             margin: 25px 0;
         }
 
-        /* 截图图片响应式缩放属性 */
         .screenshot-img {
-            width: 100%;             /* 宽度100%跟随网格列宽度自适应 */
-            height: auto;            /* 高度自适应 */
-            aspect-ratio: 16 / 9;    /* 强制固定为 16:9 游戏画面标准比例 */
-            object-fit: cover;       /* 自动裁剪填充，防止图片拉伸变形 */
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             background-color: #1a1a1a;
@@ -292,7 +286,6 @@
             transition: all 0.3s ease;
         }
 
-        /* 鼠标悬停动效 */
         .screenshot-img:hover {
             border-color: #FFC312;
             transform: translateY(-4px);
@@ -324,7 +317,7 @@
             transform: translateY(-2px);
         }
 
-        /* 公司信息页脚 */
+        /* 页脚 */
         .company-footer {
             width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.7) 100%);
@@ -399,7 +392,6 @@
             box-shadow: 0 5px 10px rgba(234, 32, 39, 0.4);
         }
 
-        /* 烟雾与光晕动效 */
         .smoke-overlay {
             position: fixed;
             bottom: 0;
@@ -429,7 +421,7 @@
             }
         }
 
-        /* 移动端响应式适配优化 */
+        /* 移动端响应式适配 */
         @media (max-width: 768px) {
             .navbar {
                 padding: 0 12px;
@@ -486,7 +478,7 @@
         <ul class="navbar-menu">
             
             <li class="nav-item dropdown">
-                <a href="#fr-legends" class="nav-link">games ▾</a>
+                <a href="javascript:void(0)" class="nav-link">games ▾</a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item"><a href="#fr-legends-2">fr legends 2</a></li>
                     <li class="dropdown-item"><a href="#fr-legends">fr legends</a></li>
@@ -509,7 +501,7 @@
     <!-- 页面长主体 -->
     <main class="page-container">
 
-        <!-- FR LEGENDS 2 (二代) 板块 -->
+        <!-- FR LEGENDS 2 板块 -->
         <section id="fr-legends-2" class="section-block">
             <h2 class="section-title">FR LEGENDS 2</h2>
             <p class="game-description" style="font-size: 1.4rem; color: #FFC312; font-style: italic;">
@@ -517,7 +509,7 @@
             </p>
         </section>
         
-        <!-- FR LEGENDS (一代) 板块 -->
+        <!-- FR LEGENDS 板块 -->
         <section id="fr-legends" class="section-block">
             <h2 class="section-title">FR LEGENDS</h2>
             <p class="game-description">
@@ -525,7 +517,6 @@
                 FR LEGENDS is all about drifting! From driving legendary FR (front-engine, rear-wheel-drive) drift cars at world’s most iconic circuits, to customize everything on your car including engine swaps and wide-body kits. Experience tandem drift battles alongside AI drivers with realistic scoring rules based on real-world competition judging.
             </p>
             
-            <!-- YouTube 视频嵌入区 -->
             <div class="video-container">
                 <iframe 
                     src="https://www.youtube.com/embed/DkfC2jdjLYE" 
@@ -535,7 +526,6 @@
                 </iframe>
             </div>
 
-            <!-- 游戏截图区域 -->
             <div class="screenshot-box-container">
                 <div class="screenshot-grid">
                     <img src="pics/frl1-1.webp" alt="FR LEGENDS Screenshot 1" class="screenshot-img">
@@ -544,7 +534,6 @@
                 </div>
             </div>
 
-            <!-- Apple App Store 官方下载超链接 -->
             <a href="https://apps.apple.com/app/fr-legends/id1435740083" target="_blank" class="app-store-btn">
                 <span> Download on App Store</span>
             </a>
@@ -579,23 +568,20 @@
 
     </main>
 
-    <!-- 公司信息页脚 -->
+    <!-- 页脚 -->
     <footer class="company-footer">
         <div class="footer-container">
-            <!-- 左侧：公司名称与版权 -->
             <div class="footer-left">
                 <div class="company-name">FRL GAMES LLC</div>
                 <p>&copy; 2026 FRL GAMES LLC. All Rights Reserved.</p>
             </div>
             
-            <!-- 中间：商务与联系链接 -->
             <div class="footer-center">
                 <a href="mailto:contact@frlgames.com">Contact: contact@frlgames.com</a>
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
             </div>
             
-            <!-- 右侧：社交媒体/社区链接入口 -->
             <div class="footer-right">
                 <div class="social-links">
                     <a href="https://www.instagram.com/frlegendsgame/" target="_blank" class="social-icon" title="Instagram">IG</a>
@@ -604,30 +590,29 @@
         </div>
     </footer>
 
-    <!-- JS：控制点击后强制关闭下拉菜单并在划出时恢复 -->
+    <!-- 下拉菜单控制逻辑 -->
     <script>
         const dropdown = document.querySelector('.dropdown');
+        const gamesToggleBtn = dropdown.querySelector('.nav-link');
         const dropdownLinks = document.querySelectorAll('.dropdown-item a');
 
-        // 点击菜单项后，强制隐藏下拉菜单
+        // 1. 点击 GAMES 按钮：切换展开/关闭
+        gamesToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('is-open');
+        });
+
+        // 2. 点击具体菜单项：关闭下拉框并完成跳转
         dropdownLinks.forEach(link => {
             link.addEventListener('click', () => {
-                dropdown.classList.add('is-hidden');
-                if (document.activeElement) {
-                    document.activeElement.blur();
-                }
+                dropdown.classList.remove('is-open');
             });
         });
 
-        // 当鼠标划出菜单区域时（或移动端划开时），重置状态，恢复下次正常悬停
-        dropdown.addEventListener('mouseleave', () => {
-            dropdown.classList.remove('is-hidden');
-        });
-
-        // 兼容移动端：触摸页面其他空白区域时恢复下拉框状态
-        document.addEventListener('touchstart', (e) => {
+        // 3. 点击页面其他空白区域：自动关闭下拉框
+        document.addEventListener('click', (e) => {
             if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('is-hidden');
+                dropdown.classList.remove('is-open');
             }
         });
     </script>
