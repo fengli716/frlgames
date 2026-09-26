@@ -159,7 +159,7 @@
             flex: 1;
         }
 
-        /* 页面大板块通用样式（移除了 skew 倾斜变形） */
+        /* 页面大板块通用样式 */
         .section-block {
             margin-bottom: 60px;
             scroll-margin-top: 90px;
@@ -168,7 +168,6 @@
             border-radius: 8px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            /* transform: skewX(-2deg); 已移除此斜角属性以恢复摆正效果 */
         }
 
         /* 板块标题 */
@@ -227,7 +226,7 @@
             border: 0;
         }
 
-        /* 截图占位区域容器 */
+        /* 截图区域自适应网格布局 */
         .screenshot-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -235,26 +234,24 @@
             margin: 25px 0;
         }
 
-        .screenshot-box {
-            width: 100%;
-            height: 180px;
-            background-color: #1a1a1a;
-            border: 2px dashed #444;
+        /* 截图图片响应式缩放属性 */
+        .screenshot-img {
+            width: 100%;             /* 宽度100%跟随网格列宽度自适应 */
+            height: auto;            /* 高度自适应 */
+            aspect-ratio: 16 / 9;    /* 强制固定为 16:9 游戏画面标准比例 */
+            object-fit: cover;       /* 自动裁剪填充，防止图片拉伸变形 */
             border-radius: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #666;
-            font-family: 'Arial', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
         }
 
-        .screenshot-box:hover {
+        /* 鼠标悬停动效 */
+        .screenshot-img:hover {
             border-color: #FFC312;
-            color: #FFC312;
-            background-color: #222;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 195, 18, 0.3);
         }
 
         /* Apple 商店按钮 */
@@ -478,8 +475,6 @@
                 <span> Download on App Store</span>
             </a>
         </section>
-
-        
 
         <!-- ABOUT 板块 -->
         <section id="about" class="section-block">
