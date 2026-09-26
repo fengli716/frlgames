@@ -53,7 +53,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* 导航栏 Logo (移植主标题炫酷特效) */
+        /* 导航栏 Logo */
         .navbar-logo {
             font-size: 2.2rem;
             color: #fff;
@@ -159,16 +159,16 @@
             flex: 1;
         }
 
-        /* 页面大板块通用样式 */
+        /* 页面大板块通用样式（移除了 skew 倾斜变形） */
         .section-block {
             margin-bottom: 60px;
-            scroll-margin-top: 90px; /* 防止滚动定位被固定导航栏遮挡 */
+            scroll-margin-top: 90px;
             background: rgba(15, 15, 15, 0.7);
             border: 1px solid rgba(234, 32, 39, 0.2);
             border-radius: 8px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: skewX(-2deg); /* 轻微倾斜斜角速度感 */
+            /* transform: skewX(-2deg); 已移除此斜角属性以恢复摆正效果 */
         }
 
         /* 板块标题 */
@@ -203,6 +203,28 @@
             line-height: 1.6;
             color: #ccc;
             margin-bottom: 25px;
+        }
+
+        /* 响应式 YouTube 视频播放器容器 (16:9) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(234, 32, 39, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* 截图占位区域容器 */
@@ -420,10 +442,20 @@
         <section id="fr-legends" class="section-block">
             <h2 class="section-title">FR LEGENDS</h2>
             <p class="game-description">
-                FR LEGENDS was developed by a two-person team who are now the core developers behind FRL GAMES.</br>
+                FR LEGENDS was developed by a two-person team who are now the core developers behind FRL GAMES.<br><br>
                 FR LEGENDS is all about drifting! From driving legendary FR (front-engine, rear-wheel-drive) drift cars at world’s most iconic circuits, to customize everything on your car including engine swaps and wide-body kits. Experience tandem drift battles alongside AI drivers with realistic scoring rules based on real-world competition judging.
             </p>
             
+            <!-- YouTube 视频嵌入区 -->
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/DkfC2jdjLYE" 
+                    title="FR LEGENDS Trailer" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
             <!-- 游戏截图预留区 -->
             <div class="screenshot-grid">
                 <div class="screenshot-box">Screenshot Placeholder 1</div>
@@ -445,7 +477,7 @@
             </p>
         </section>
 
-        <!-- ABOUT 板块 (已调整置于最底部) -->
+        <!-- ABOUT 板块 -->
         <section id="about" class="section-block">
             <h2 class="section-title">ABOUT US</h2>
             <p class="about-text">
