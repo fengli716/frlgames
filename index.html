@@ -424,21 +424,21 @@
         /* 移动端响应式适配优化 */
         @media (max-width: 768px) {
             .navbar {
-                padding: 0 12px; /* 进一步压缩两端边距，留出更多空间给文字 */
+                padding: 0 12px; /* 压缩两端边距，留出更多空间给文字 */
             }
 
             .navbar-logo {
-                font-size: 1.3rem; /* 适当减小 Logo 字体，避免霸屏 */
+                font-size: 1.3rem; /* 减小 Logo 字体，防止挤占空间 */
                 letter-spacing: 1px;
             }
 
             .navbar-menu {
-                gap: 5px; /* 大幅缩小菜单项之间的间距 */
+                gap: 5px; /* 缩小菜单项之间的间距 */
             }
 
             .nav-link {
-                font-size: 0.95rem; /* 稍微缩小文字尺寸 */
-                padding: 6px 8px;   /* 减小按钮点击区域的内边距 */
+                font-size: 0.95rem; /* 适当缩小文字尺寸 */
+                padding: 6px 8px;   /* 减小内边距，确保完整的 contact 能放得下 */
                 letter-spacing: 0;  /* 取消字间距以节省空间 */
             }
 
@@ -595,6 +595,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- 点击下拉菜单项后自动关闭下拉框 -->
+    <script>
+        document.querySelectorAll('.dropdown-item a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.activeElement.blur();
+            });
+        });
+    </script>
 
 </body>
 </html>
