@@ -123,7 +123,8 @@
             border-radius: 0 0 4px 4px;
         }
 
-        .dropdown:hover .dropdown-menu {
+        /* 悬停且未关闭时显示下拉框 */
+        .dropdown:hover:not(.is-closed) .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -424,22 +425,22 @@
         /* 移动端响应式适配优化 */
         @media (max-width: 768px) {
             .navbar {
-                padding: 0 12px; /* 压缩两端边距，留出更多空间给文字 */
+                padding: 0 12px;
             }
 
             .navbar-logo {
-                font-size: 1.3rem; /* 减小 Logo 字体，防止挤占空间 */
+                font-size: 1.3rem;
                 letter-spacing: 1px;
             }
 
             .navbar-menu {
-                gap: 5px; /* 缩小菜单项之间的间距 */
+                gap: 5px;
             }
 
             .nav-link {
-                font-size: 0.95rem; /* 适当缩小文字尺寸 */
-                padding: 6px 8px;   /* 减小内边距，确保完整的 contact 能放得下 */
-                letter-spacing: 0;  /* 取消字间距以节省空间 */
+                font-size: 0.95rem;
+                padding: 6px 8px;
+                letter-spacing: 0;
             }
 
             .section-block {
@@ -596,11 +597,19 @@
         </div>
     </footer>
 
-    <!-- 点击下拉菜单项后自动关闭下拉框 -->
+    <!-- JS：控制点击后强制关闭下拉菜单 -->
     <script>
-        document.querySelectorAll('.dropdown-item a').forEach(link => {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownLinks = document.querySelectorAll('.dropdown-item a');
+
+        dropdownLinks.forEach(link => {
             link.addEventListener('click', () => {
+                dropdown.classList.add('is-closed');
                 document.activeElement.blur();
+
+                setTimeout(() => {
+                    dropdown.classList.remove('is-closed');
+                }, 300);
             });
         });
     </script>
