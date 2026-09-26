@@ -123,11 +123,18 @@
             border-radius: 0 0 4px 4px;
         }
 
-        /* 悬停且未关闭时显示下拉框 */
-        .dropdown:hover:not(.is-closed) .dropdown-menu {
+        /* 悬停且未被强制隐藏时显示下拉框 */
+        .dropdown:hover:not(.is-hidden) .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+
+        /* 强制隐藏时的辅助类 */
+        .dropdown.is-hidden .dropdown-menu {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
 
         .dropdown-item a {
@@ -597,20 +604,31 @@
         </div>
     </footer>
 
-    <!-- JS：控制点击后强制关闭下拉菜单 -->
+    <!-- JS：控制点击后强制关闭下拉菜单并在划出时恢复 -->
     <script>
         const dropdown = document.querySelector('.dropdown');
         const dropdownLinks = document.querySelectorAll('.dropdown-item a');
 
+        // 点击菜单项后，强制隐藏下拉菜单
         dropdownLinks.forEach(link => {
             link.addEventListener('click', () => {
-                dropdown.classList.add('is-closed');
-                document.activeElement.blur();
-
-                setTimeout(() => {
-                    dropdown.classList.remove('is-closed');
-                }, 300);
+                dropdown.classList.add('is-hidden');
+                if (document.activeElement) {
+                    document.activeElement.blur();
+                }
             });
+        });
+
+        // 当鼠标划出菜单区域时（或移动端划开时），重置状态，恢复下次正常悬停
+        dropdown.addEventListener('mouseleave', () => {
+            dropdown.classList.remove('is-hidden');
+        });
+
+        // 兼容移动端：触摸页面其他空白区域时恢复下拉框状态
+        document.addEventListener('touchstart', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('is-hidden');
+            }
         });
     </script>
 
