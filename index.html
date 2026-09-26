@@ -62,6 +62,7 @@
             letter-spacing: 2px;
             font-style: italic; /* 斜体倾斜感 */
             display: inline-block;
+            white-space: nowrap; /* 防止 Logo 在手机上被挤换行 */
             text-shadow: 
                 0 0 8px rgba(234, 32, 39, 0.8),
                 -2px 2px 0px #EA2027,
@@ -95,6 +96,7 @@
             letter-spacing: 1px;
             padding: 10px 15px;
             display: block;
+            white-space: nowrap;
             transition: all 0.3s ease;
         }
 
@@ -419,30 +421,47 @@
             }
         }
 
-        /* 移动端响应式适配 */
+        /* 移动端响应式适配优化 */
         @media (max-width: 768px) {
             .navbar {
-                padding: 0 15px;
+                padding: 0 12px; /* 进一步压缩两端边距，留出更多空间给文字 */
             }
+
             .navbar-logo {
-                font-size: 1.5rem;
+                font-size: 1.3rem; /* 适当减小 Logo 字体，避免霸屏 */
+                letter-spacing: 1px;
             }
+
+            .navbar-menu {
+                gap: 5px; /* 大幅缩小菜单项之间的间距 */
+            }
+
+            .nav-link {
+                font-size: 0.95rem; /* 稍微缩小文字尺寸 */
+                padding: 6px 8px;   /* 减小按钮点击区域的内边距 */
+                letter-spacing: 0;  /* 取消字间距以节省空间 */
+            }
+
             .section-block {
                 padding: 25px;
                 margin-bottom: 40px;
             }
+
             .section-title {
                 font-size: 1.8rem;
             }
+
             .footer-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
+
             .footer-center {
                 flex-direction: column;
                 gap: 10px;
             }
+
             .contact-list li {
                 flex-direction: column;
                 align-items: flex-start;
@@ -530,7 +549,8 @@
                 FR LEGENDS started in 2017 with just two drift-obsessed devs. We launched in 2018 and it became an immediate worldwide favorite. Now as FRL GAMES, we’re still driven by the same passion, making drift games for people who live and breathe drifting.
             </p>
         </section>
-    <!-- CONTACT 板块 -->
+
+        <!-- CONTACT 板块 -->
         <section id="contact" class="section-block">
             <h2 class="section-title">CONTACT US</h2>
             <ul class="contact-list">
@@ -548,7 +568,6 @@
                 </li>
             </ul>
         </section>
-        
 
     </main>
 
