@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRL GAMES | FR LEGENDS 2 COMING SOON</title>
+    <title>FRL GAMES</title>
     <style>
         /* 全局样式：赛车硬核黑灰底色 */
         * {
@@ -33,7 +33,7 @@
             align-items: center;
             overflow-x: hidden;
             color: #fff;
-            padding-top: 70px; /* 为固定导航栏预留空间 */
+            padding-top: 90px; /* 为固定导航栏预留留白 */
         }
 
         /* 顶部固定导航栏 */
@@ -154,14 +154,15 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
             z-index: 10;
+            flex: 1;
         }
 
         /* 页面大板块通用样式 */
         .section-block {
-            margin-bottom: 80px;
-            scroll-margin-top: 80px; /* 防止滚动定位被固定导航栏遮挡 */
+            margin-bottom: 60px;
+            scroll-margin-top: 90px; /* 防止滚动定位被固定导航栏遮挡 */
             background: rgba(15, 15, 15, 0.7);
             border: 1px solid rgba(234, 32, 39, 0.2);
             border-radius: 8px;
@@ -181,38 +182,6 @@
             display: inline-block;
             padding-bottom: 5px;
             text-shadow: 0 0 10px rgba(255, 195, 18, 0.4);
-        }
-
-        /* Hero 顶端视觉区 */
-        .hero-section {
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transform: skewX(-4deg);
-            margin-bottom: 40px;
-        }
-
-        .racing-line {
-            width: 120px;
-            height: 8px;
-            background: linear-gradient(90deg, #FFC312, #EE5A24, #EA2027);
-            margin: 0 auto 30px auto;
-            border-radius: 4px;
-            box-shadow: 0 0 15px #EA2027;
-        }
-
-        .hero-subtitle {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            color: #FFC312;
-            text-shadow: 0 0 15px rgba(255, 195, 18, 0.6);
-            font-style: italic;
-            border-bottom: 4px dashed #EA2027;
-            padding-bottom: 12px;
         }
 
         /* About 文本块 */
@@ -404,10 +373,6 @@
             .navbar-logo {
                 font-size: 1.5rem;
             }
-            .hero-subtitle {
-                font-size: 1.8rem;
-                letter-spacing: 3px;
-            }
             .section-block {
                 padding: 25px;
                 margin-bottom: 40px;
@@ -451,20 +416,6 @@
     <!-- 页面长主体 -->
     <main class="page-container">
 
-        <!-- 顶部 Hero 预告区 -->
-        <section class="hero-section">
-            <div class="racing-line"></div>
-            <h2 class="hero-subtitle">FR LEGENDS 2 COMING SOON</h2>
-        </section>
-
-        <!-- ABOUT 板块 -->
-        <section id="about" class="section-block">
-            <h2 class="section-title">ABOUT US</h2>
-            <p class="about-text">
-                "It's not just a game. It's a love letter from hardcore drift enthusiasts to everyone who loves drifting."
-            </p>
-        </section>
-
         <!-- FR LEGENDS (一代) 板块 -->
         <section id="fr-legends" class="section-block">
             <h2 class="section-title">FR LEGENDS</h2>
@@ -490,6 +441,14 @@
             <h2 class="section-title">FR LEGENDS 2</h2>
             <p class="game-description" style="font-size: 1.4rem; color: #FFC312; font-style: italic;">
                 Now in active development! Stay tuned for the ultimate drifting experience!
+            </p>
+        </section>
+
+        <!-- ABOUT 板块 (已调整置于最底部) -->
+        <section id="about" class="section-block">
+            <h2 class="section-title">ABOUT US</h2>
+            <p class="about-text">
+                "It's not just a game. It's a love letter from hardcore drift enthusiasts to everyone who loves drifting."
             </p>
         </section>
 
